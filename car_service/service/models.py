@@ -7,9 +7,9 @@ from django.utils.translation import gettext_lazy as _
 
 class CarModel(models.Model):
     make = models.CharField(_('Make'), max_length=50, null=False, help_text=_(
-        'Car manufacturer'))
+        'Car manufacturer'), db_index=True)
     model = models.CharField(_('Model'), max_length=50, null=False, help_text=_(
-        'Car model'))
+        'Car model'), db_index=True)
 
     class Meta:
         ordering = ['make', 'model']
@@ -22,8 +22,8 @@ class CarModel(models.Model):
 
 class CarInstance(models.Model):
     registration = models.CharField(
-        _('Registration'), max_length=6, null=False)
-    vin = models.CharField(_('VIN'), max_length=17, null=False)
+        _('Registration'), max_length=6, null=False, db_index=True)
+    vin = models.CharField(_('VIN'), max_length=17, null=False, db_index=True)
     model = models.ForeignKey(
         CarModel,
         null=False,
@@ -53,6 +53,18 @@ class Order(models.Model):
     )
     sum = models.DecimalField(_('Sum'), null=False,
                               max_digits=10, decimal_places=2)
+    
+    ORDER_STATUS = (
+        (0, _("New")),
+        (10, _("Working")),
+        (20, _("Finished repairs")),
+        (30, _("Closed (paid)")),
+        (50, _("Removed")),
+    )
+
+    status = models.PositiveIntegerField(
+        _('Status'), default=0, choices=ORDER_STATUS)
+
 
     class Meta:
         verbose_name = _('Order')
@@ -63,7 +75,7 @@ class Order(models.Model):
 
 
 class Service(models.Model):
-    name = models.CharField(_('Service'), max_length=50, null=False)
+    name = models.CharField(_('Name'), max_length=50, null=False, db_index=True)
     price = models.DecimalField(
         _('Price'), null=False, max_digits=10, decimal_places=2)
 
@@ -72,7 +84,7 @@ class Service(models.Model):
         verbose_name_plural = _('Services')
 
     def __str__(self) -> str:
-        return f'{self.service}: {self.price}'
+        return f'{self.name}: {self.price}'
 
 
 class OrderLine(models.Model):

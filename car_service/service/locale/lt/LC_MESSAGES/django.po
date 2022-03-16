@@ -9,55 +9,55 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-16 19:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2022-03-16 21:00+0200\n"
+"Last-Translator: Vytautas Tutkus <vytautas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
-"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
-"1 : n % 1 != 0 ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
 #: .\service\admin.py:17
 msgid "Car Service Admin"
-msgstr ""
+msgstr "Autoserviso Administratorius"
 
 #: .\service\admin.py:18
 msgid "Car Service Administration"
-msgstr ""
+msgstr "Autoserviso Administravimas"
 
 #: .\service\models.py:9
 msgid "Make"
-msgstr ""
+msgstr "Marke"
 
 #: .\service\models.py:10
 msgid "Car manufacturer"
-msgstr ""
+msgstr "Automobilio gamintojas"
 
 #: .\service\models.py:11
 msgid "Model"
-msgstr ""
+msgstr "Modelis"
 
 #: .\service\models.py:12
 msgid "Car model"
-msgstr ""
+msgstr "Automobilio modelis"
 
 #: .\service\models.py:16 .\service\models.py:31
 msgid "Car Model"
-msgstr ""
+msgstr "Automobilio Modelis"
 
 #: .\service\models.py:17
 msgid "Car Models"
-msgstr ""
+msgstr "Automobilio Modeliai"
 
 #: .\service\models.py:25
 msgid "Registration"
-msgstr ""
+msgstr "Registracijos numeris"
 
 #: .\service\models.py:26
 msgid "VIN"
-msgstr ""
+msgstr "VIN"
 
 #: .\service\models.py:38 .\service\models.py:51
 msgid "Car Instance"
@@ -73,39 +73,39 @@ msgstr ""
 
 #: .\service\models.py:54
 msgid "Sum"
-msgstr ""
+msgstr "Suma"
 
 #: .\service\models.py:58 .\service\models.py:83
 msgid "Order"
-msgstr ""
+msgstr "Uzsakymas"
 
 #: .\service\models.py:59
 msgid "Orders"
-msgstr ""
+msgstr "Uzsakymai"
 
 #: .\service\models.py:66 .\service\models.py:71 .\service\models.py:90
 msgid "Service"
-msgstr ""
+msgstr "Paslauga"
 
 #: .\service\models.py:68 .\service\models.py:95
 msgid "Price"
-msgstr ""
+msgstr "Kaina"
 
 #: .\service\models.py:72
 msgid "Services"
-msgstr ""
+msgstr "Paslaugos"
 
 #: .\service\models.py:93
 msgid "Quantity"
-msgstr ""
+msgstr "Kiekis"
 
 #: .\service\models.py:98
 msgid "Order Line"
-msgstr ""
+msgstr "Uzsakymo eilute"
 
 #: .\service\models.py:99
 msgid "Orders Lines"
-msgstr ""
+msgstr "Uzsakymo eilutes"
 
 #: .\service\templates\service\base copy.html:12
 #: .\service\templates\service\base.html:12

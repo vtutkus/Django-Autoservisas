@@ -9,122 +9,124 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-16 19:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2022-03-16 21:07+0200\n"
+"Last-Translator: Vytautas Tutkus <vytautas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
-"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
-"1 : n % 1 != 0 ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
 #: .\user_profile\models.py:10
 msgid "Picture"
-msgstr ""
+msgstr "Nuotrauka"
 
 #: .\user_profile\models.py:24
 msgid "User Profile"
-msgstr ""
+msgstr "Vartotojo Profilis"
 
 #: .\user_profile\models.py:25
 msgid "User Profiles"
-msgstr ""
+msgstr "Vartotojo Profiliai"
 
 #: .\user_profile\templates\registration\logged_out.html:6
 msgid "Logged out"
-msgstr ""
+msgstr "Atsijunges"
 
 #: .\user_profile\templates\registration\logged_out.html:7
 #: .\user_profile\templates\registration\login.html:26
 #: .\user_profile\templates\registration\password_reset_complete.html:6
 #: .\user_profile\templates\user_profile\register.html:29
 msgid "Login"
-msgstr ""
+msgstr "Prisijungti"
 
 #: .\user_profile\templates\registration\logged_out.html:7
 msgid "or"
-msgstr ""
+msgstr "arba"
 
 #: .\user_profile\templates\registration\logged_out.html:7
 msgid "go back to index"
-msgstr ""
+msgstr "grizti i pagrindini"
 
 #: .\user_profile\templates\registration\login.html:6
 msgid "login error, please try again"
-msgstr ""
+msgstr "prisijungimo klaida, prasome bandyti dar karta"
 
 #: .\user_profile\templates\registration\login.html:10
 msgid "you do not have permission to view this page"
-msgstr ""
+msgstr "jus neturite teises pasiekti si puslapi"
 
 #: .\user_profile\templates\registration\login.html:18
 #: .\user_profile\templates\user_profile\register.html:9
 msgid "Username"
-msgstr ""
+msgstr "Prisijungimo vardas"
 
 #: .\user_profile\templates\registration\login.html:22
 #: .\user_profile\templates\user_profile\register.html:19
 msgid "Password"
-msgstr ""
+msgstr "Slaptazodis"
 
 #: .\user_profile\templates\registration\login.html:30
 msgid "Forgot password"
-msgstr ""
+msgstr "Pamirsau slaptazodi"
 
 #: .\user_profile\templates\registration\password_reset_complete.html:5
 msgid "Password reset complete"
-msgstr ""
+msgstr "Slaptazodzio atnaujinimas ivykdytas"
 
 #: .\user_profile\templates\registration\password_reset_confirm.html:5
 msgid "Password Reset"
-msgstr ""
+msgstr "Atnaujinti Slaptazodi"
 
 #: .\user_profile\templates\registration\password_reset_confirm.html:13
 msgid "New Password"
-msgstr ""
+msgstr "Naujas Slaptazodis"
 
 #: .\user_profile\templates\registration\password_reset_confirm.html:19
 msgid "Repeat New Password"
-msgstr ""
+msgstr "Pakartoti Nauja Slaptazodi"
 
 #: .\user_profile\templates\registration\password_reset_confirm.html:24
 msgid "Change Password"
-msgstr ""
+msgstr "Pakeisti Slaptazodi"
 
 #: .\user_profile\templates\registration\password_reset_confirm.html:27
 msgid "link expired"
-msgstr ""
+msgstr "nuoroda nebegalioja"
 
 #: .\user_profile\templates\registration\password_reset_done.html:5
 msgid "Password reset"
-msgstr ""
+msgstr "Slaptazodzio atnaujinimas"
 
 #: .\user_profile\templates\registration\password_reset_done.html:6
 msgid "we emailed you the link"
-msgstr ""
+msgstr "issiunteme jums nuoroda e-pastu"
 
 #: .\user_profile\templates\registration\password_reset_email.html:2
 msgid ""
 "\n"
 "someone send you reset link\n"
 msgstr ""
+"\n"
+"kazkas issiunte jums atnaujinimo nuoroda\n"
 
 #: .\user_profile\templates\registration\password_reset_form.html:11
 msgid "Reset Password"
-msgstr ""
+msgstr "Atnaujinti Slaptazodi"
 
 #: .\user_profile\templates\user_profile\profile.html:15
 msgid "Update user info"
-msgstr ""
+msgstr "Atnaujinti vartotojo informacija"
 
 #: .\user_profile\templates\user_profile\profile.html:20
 msgid "Update"
-msgstr ""
+msgstr "Atnaujinti"
 
 #: .\user_profile\templates\user_profile\register.html:5
 msgid "User registration"
-msgstr ""
+msgstr "Vartotojo registracija"
 
 #: .\user_profile\templates\user_profile\register.html:11
 msgid "alphanumeric name up to 150 chars"
@@ -132,28 +134,28 @@ msgstr ""
 
 #: .\user_profile\templates\user_profile\register.html:14
 msgid "E-mail"
-msgstr ""
+msgstr "E-pastas"
 
 #: .\user_profile\templates\user_profile\register.html:16
 msgid "enter valid email adress"
-msgstr ""
+msgstr "iveskite galiojanti e-pasto adresa"
 
 #: .\user_profile\templates\user_profile\register.html:21
 msgid "minimum 8 chars and a number"
-msgstr ""
+msgstr "minimum astuoni simboliai ir skaiciai"
 
 #: .\user_profile\templates\user_profile\register.html:24
 msgid "Repeat Password"
-msgstr ""
+msgstr "Pakartoti Slaptazodi"
 
 #: .\user_profile\templates\user_profile\register.html:27
 msgid "Register"
-msgstr ""
+msgstr "Registruotis"
 
 #: .\user_profile\templates\user_profile\register.html:29
 msgid "if you're registered, please "
-msgstr ""
+msgstr "jeigu jau esate uzsiregistraves, prasome"
 
 #: .\user_profile\views.py:26
 msgid "Profile updated succesfully"
-msgstr ""
+msgstr "Profilis sekmingai atnaujintas"

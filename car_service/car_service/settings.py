@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'service',
+    'user_profile',
     'rosetta',
     
 ]
@@ -116,7 +117,7 @@ LANGUAGES = [
     ('lt', 'Lietuviu')
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Vilnius'
 
 USE_I18N = True
 

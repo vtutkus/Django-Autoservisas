@@ -28,9 +28,9 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
-    # path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('service/', include('service.urls')),
-    # path('user_profile/', include('user_profile.urls', namespace='user_profile')),
+    path('user_profile/', include('user_profile.urls', namespace='user_profile')),
     path('', RedirectView.as_view(url='service/', permanent=True)),
 
 )

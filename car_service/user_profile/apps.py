@@ -7,4 +7,4 @@ class UserProfileConfig(AppConfig):
 
     def ready(self):
         from .signals import sync_user_profile
-        return super().ready()        
+        return super().ready()

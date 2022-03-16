@@ -7,9 +7,9 @@
     {% load i18n %}
     {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'library/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'service/css/style.css' %}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <title>{% block title %}{% trans 'Library' %}{% endblock title %}</title>
+    <title>{% block title %}{% trans 'Car Service' %}{% endblock title %}</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,9 +21,18 @@
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="{% url 'service:index' %}">{% trans 'Home' %}</a></li>
             {% if request.user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'user_profile:profile' %}">{% trans 'My Profile' %}</a></li>
+
                 {% if request.user.is_superuser or request.user.is_staff %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">{% trans 'Admin' %}</a></li>
                 {% endif %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}?next={% url 'service:index' %}">{% trans 'Logout' %}</a></li>
+            <li class="nav-item"><div class="my-2 my-md-0 p-2">
+                <p>{% if request.user.first_name %}{{ request.user.first_name }}{% else %}{{ request.user.get_username }}{% endif %}</p>
+            </div></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}?next={{request.path}}">{% trans 'Login' %}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'user_profile:register' %}">{% trans 'Register' %}</a></li>
             {% endif %}
             <li class="nav-item">
                 <form action="{% url 'set_language' %}" method="post" class="form-inline- my-2 my-md-0 p-2">

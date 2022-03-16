@@ -6,6 +6,8 @@ Django==4.0.3
 django-crispy-forms==1.14.0
 django-rosetta==0.9.8
 idna==3.3
+install==1.3.5
+Pillow==9.0.1
 polib==1.1.1
 pycodestyle==2.8.0
 requests==2.27.1

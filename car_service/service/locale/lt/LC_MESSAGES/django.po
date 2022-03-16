@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-16 19:30+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+#: .\service\admin.py:17
+msgid "Car Service Admin"
+msgstr ""
+
+#: .\service\admin.py:18
+msgid "Car Service Administration"
+msgstr ""
+
+#: .\service\models.py:9
+msgid "Make"
+msgstr ""
+
+#: .\service\models.py:10
+msgid "Car manufacturer"
+msgstr ""
+
+#: .\service\models.py:11
+msgid "Model"
+msgstr ""
+
+#: .\service\models.py:12
+msgid "Car model"
+msgstr ""
+
+#: .\service\models.py:16 .\service\models.py:31
+msgid "Car Model"
+msgstr ""
+
+#: .\service\models.py:17
+msgid "Car Models"
+msgstr ""
+
+#: .\service\models.py:25
+msgid "Registration"
+msgstr ""
+
+#: .\service\models.py:26
+msgid "VIN"
+msgstr ""
+
+#: .\service\models.py:38 .\service\models.py:51
+msgid "Car Instance"
+msgstr ""
+
+#: .\service\models.py:39
+msgid "Car Instances"
+msgstr ""
+
+#: .\service\models.py:46
+msgid "Created at"
+msgstr ""
+
+#: .\service\models.py:54
+msgid "Sum"
+msgstr ""
+
+#: .\service\models.py:58 .\service\models.py:83
+msgid "Order"
+msgstr ""
+
+#: .\service\models.py:59
+msgid "Orders"
+msgstr ""
+
+#: .\service\models.py:66 .\service\models.py:71 .\service\models.py:90
+msgid "Service"
+msgstr ""
+
+#: .\service\models.py:68 .\service\models.py:95
+msgid "Price"
+msgstr ""
+
+#: .\service\models.py:72
+msgid "Services"
+msgstr ""
+
+#: .\service\models.py:93
+msgid "Quantity"
+msgstr ""
+
+#: .\service\models.py:98
+msgid "Order Line"
+msgstr ""
+
+#: .\service\models.py:99
+msgid "Orders Lines"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:12
+#: .\service\templates\service\base.html:12
+msgid "Library"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:22
+#: .\service\templates\service\base.html:22
+msgid "Home"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:24
+msgid "My Profile"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:25
+msgid "My Books"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:26
+msgid "Borrow a book"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:28
+#: .\service\templates\service\base.html:25
+msgid "Admin"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:30
+msgid "Logout"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:35
+msgid "Login"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:36
+msgid "Register"
+msgstr ""
+
+#: .\service\templates\service\base copy.html:40
+msgid "Search"
+msgstr ""

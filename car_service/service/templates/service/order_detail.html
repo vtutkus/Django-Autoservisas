@@ -1,0 +1,22 @@
+{% extends 'service/base.html' %}
+{% load i18n static %}
+
+{% block content %}
+<section>
+    <h1>{{ order.car_instance }}</h1>
+    <p>{% trans 'Order date' %}: {{ order.created_at }}</p>
+    <p>{% trans 'Due back' %}: {{ order.due_back }}</p>
+    <p>{% trans 'Sum' %}: {{ order.sum }} EUR</p>
+
+{% if order.order_lines %}
+<ul class="list-group">
+    {% for order_line in order.order_lines.all %}
+        <li class="list-group-item">
+            {% trans 'Service' %}: {{order_line.service.name}}, {% trans 'Count' %}: {{order_line.quantity}}, {% trans 'Price' %}: {{order_line.price}} EUR
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+</section>
+
+{% endblock content %}

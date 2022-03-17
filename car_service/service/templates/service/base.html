@@ -22,6 +22,8 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'service:index' %}">{% trans 'Home' %}</a></li>
             {% if request.user.is_authenticated %}
             <li class="nav-item"><a class="nav-link" href="{% url 'user_profile:profile' %}">{% trans 'My Profile' %}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'service:car-instances' %}">{% trans 'Cars' %}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'service:orders' %}">{% trans 'Orders' %}</a></li>
 
                 {% if request.user.is_superuser or request.user.is_staff %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">{% trans 'Admin' %}</a></li>
@@ -30,6 +32,11 @@
             <li class="nav-item"><div class="my-2 my-md-0 p-2">
                 <p>{% if request.user.first_name %}{{ request.user.first_name }}{% else %}{{ request.user.get_username }}{% endif %}</p>
             </div></li>
+            <li class="nav-item">
+                <form action="{% url 'service:car-instance-search' %}" method="get" class="form-inline- my-2 my-md-0">
+                    <input type="text" name="query" class="form-control" placeholder="{% trans 'Search' %}">
+                </form>
+            </li>
             {% else %}
             <li class="nav-item"><a class="nav-link" href="{% url 'login' %}?next={{request.path}}">{% trans 'Login' %}</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'user_profile:register' %}">{% trans 'Register' %}</a></li>

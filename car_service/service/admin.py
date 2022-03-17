@@ -21,15 +21,16 @@ class CarModelAdmin(admin.ModelAdmin):
 
 
 class CarInstanceAdmin(admin.ModelAdmin):
-    list_display = ('registration', 'model', 'owner', 'vin')
+    list_display = ('registration', 'model', 'owner', 'vin', 'picture')
     list_display_links = ('registration',)
     list_filter = ('owner','model',)
     search_fields = ('registration', 'vin')
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('created_at', 'status', 'car_instance', 'sum')
+    list_display = ('created_at', 'status', 'due_back', 'car_instance', 'sum')
     list_display_links = ('created_at',)
+    readonly_fields = ('sum',)
     list_filter = ('car_instance',)
     search_fields = ('car_instance',)
     inlines = (OrderLineInline, )

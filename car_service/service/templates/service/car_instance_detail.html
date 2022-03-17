@@ -1,0 +1,17 @@
+{% extends 'service/base.html' %}
+{% load i18n static %}
+
+{% block content %}
+<section>
+    <h1>{{ car_instance_detail.registration }}</a> - {{ car_instance_detail.model }}</h1>
+    <img class="rounded-square account-img" src="
+    {% if car_instance_detail.picture %}
+        {{ car_instance_detail.picture.url }}
+    {% else %}
+        {% static 'service/img/default.png' %}
+    {% endif %}">
+    <p>{% trans 'Owner' %}: {% if car_instance_detail.owner.first_name %}{{ car_instance_detail.owner.first_name }} {{ car_instance_detail.owner.last_name }}{% else %}{{ car_instance_detail.owner }}{% endif %}</p>
+    <p>{% trans 'VIN' %}: {{ car_instance_detail.vin }}</p>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'service/base.html' %}
+{% load i18n static %}
+
+{% block content %}
+    <h1>{% trans "Order list" %}</h1>
+    {% if orders %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous%}
+                <a href="?page=1">{% trans 'first' %}</a>
+                <a href="?page={{ page_obj.previous_page_number }}">{% trans 'previous' %}</a>
+            {% endif %}
+            <span class="current"> {{page_obj.number}} {% trans 'of' %} {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next%}
+                <a href="?page={{ page_obj.next_page_number }}">{% trans 'next' %}</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">{% trans 'last' %}</a>
+            {% endif %}
+        </span>
+    </div>
+    <ul class="list-group">
+        {% for order in orders %}
+            <li class="list-group-item">
+                <a href="{% url 'service:order-detail' order.id %}">{{ order.car_instance.registration }}, {{ order.created_at }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>{% trans "there are no orders registered in this car service" %}</p>
+    {% endif %}
+{% endblock content %}
+

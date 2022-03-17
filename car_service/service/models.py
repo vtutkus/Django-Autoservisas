@@ -1,6 +1,11 @@
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from datetime import date, timedelta
+from PIL import Image
+from tinymce.models import HTMLField
+
+
 
 
 # Create your models here.
@@ -33,7 +38,16 @@ class CarInstance(models.Model):
     )
     owner = models.ForeignKey(settings.AUTH_USER_MODEL,
                               null=False, on_delete=models.CASCADE)
+    picture = models.ImageField(_('Picture'), default='service/img/default.png')
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self. picture.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.picture.path)        
+    
     class Meta:
         verbose_name = _('Car Instance')
         verbose_name_plural = _('Car Instances')
@@ -64,7 +78,9 @@ class Order(models.Model):
 
     status = models.PositiveIntegerField(
         _('Status'), default=0, choices=ORDER_STATUS)
-
+    
+    due_back = models.DateField(
+        _('Due back'), null=True, blank=True, default=date.today() + timedelta(days=7))
 
     class Meta:
         verbose_name = _('Order')
@@ -112,3 +128,10 @@ class OrderLine(models.Model):
 
     def __str__(self) -> str:
         return f'{self.service.name}: {self.price}'
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.order.sum = 0
+        for line in self.order.order_lines.all():
+            self.order.sum += line.price
+        self.order.save()

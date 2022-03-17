@@ -1,0 +1,19 @@
+{% extends 'service/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans 'Search results' %}</h1>
+<p>{% trans 'Query' %}: <span class="text-bold">{{ query }}</span></p>
+    {% if cars %}
+    <ul class="list-group">
+    {% for car in cars %}
+        <li class="list-group-item">
+        <a href="{% url 'service:car-instance-detail' car.id %}">{{ car }}</a>
+        </li>
+    {% endfor %}
+    {%else%}
+    <p class="text-danger">{% trans 'no matches found' %}</p>
+    </ul>
+    {%endif%}
+
+{% endblock content %}

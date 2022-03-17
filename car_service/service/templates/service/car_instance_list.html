@@ -1,0 +1,43 @@
+{% extends 'service/base.html' %}
+{% load i18n static %}
+
+{% block content %}
+    <h1>{% trans "Car instance list" %}</h1>
+    {% if car_instances %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous%}
+                <a href="?page=1">{% trans 'first' %}</a>
+                <a href="?page={{ page_obj.previous_page_number }}">{% trans 'previous' %}</a>
+            {% endif %}
+            <span class="current"> {{page_obj.number}} {% trans 'of' %} {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next%}
+                <a href="?page={{ page_obj.next_page_number }}">{% trans 'next' %}</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">{% trans 'last' %}</a>
+            {% endif %}
+        </span>
+    </div>
+    <div class="row">
+        {% for car_instance in car_instances %}
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="
+                    {% if car_instance.picture %}
+                        {{ car_instance.picture.url }}
+                    {% else %}
+                        {% static 'service/img/default.png' %}
+                    {% endif %}">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2"> <a href="{% url 'service:car-instance-detail' car_instance.id %}">{{ car_instance.registration }}</a> - {{ car_instance.model }}</h6>
+                        <p class="card-text mb-1">{% trans 'Owner' %}: {{ car_instance.owner }}</p>
+                        <p class="card-text mb-0">{% trans 'VIN' %}: {{ car_instance.vin }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% trans "there are no cars registered in this car service" %}</p>
+    {% endif %}
+{% endblock content %}
+

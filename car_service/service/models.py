@@ -39,6 +39,7 @@ class CarInstance(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL,
                               null=False, on_delete=models.CASCADE)
     picture = models.ImageField(_('Picture'), default='service/img/default.png')
+    description = HTMLField(_('Description'), max_length=10000, blank=True, default='')
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -81,6 +82,13 @@ class Order(models.Model):
     
     due_back = models.DateField(
         _('Due back'), null=True, blank=True, default=date.today() + timedelta(days=7))
+    
+    @property
+    def is_overdue(self):
+        if self.status >= 0 and self.status <= 30 and self.due_back and self.due_back < date.today():
+            return True
+        return False
+
 
     class Meta:
         verbose_name = _('Order')
@@ -122,6 +130,12 @@ class OrderLine(models.Model):
     price = models.DecimalField(
         _('Price'), null=False, max_digits=10, decimal_places=2)
 
+    @property
+    def total_price(self):
+        total_price = self.price * self.quantity
+        return total_price
+        
+    
     class Meta:
         verbose_name = _('Order Line')
         verbose_name_plural = _('Orders Lines')
@@ -133,5 +147,5 @@ class OrderLine(models.Model):
         super().save(*args, **kwargs)
         self.order.sum = 0
         for line in self.order.order_lines.all():
-            self.order.sum += line.price
+            self.order.sum += line.total_price
         self.order.save()

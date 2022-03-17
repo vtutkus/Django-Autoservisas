@@ -10,6 +10,7 @@
     {% else %}
         {% static 'service/img/default.png' %}
     {% endif %}">
+    <p>{% trans 'Description' %}: {{ car_instance_detail.description|safe }}</p>
     <p>{% trans 'Owner' %}: {% if car_instance_detail.owner.first_name %}{{ car_instance_detail.owner.first_name }} {{ car_instance_detail.owner.last_name }}{% else %}{{ car_instance_detail.owner }}{% endif %}</p>
     <p>{% trans 'VIN' %}: {{ car_instance_detail.vin }}</p>
 </section>

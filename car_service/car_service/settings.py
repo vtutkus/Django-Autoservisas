@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'service',
     'user_profile',
     'rosetta',
+    'tinymce',
+
     
 ]
 

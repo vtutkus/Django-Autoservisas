@@ -5,7 +5,7 @@
 <section>
     <h1>{{ order.car_instance }}</h1>
     <p>{% trans 'Order date' %}: {{ order.created_at }}</p>
-    <p>{% trans 'Due back' %}: {{ order.due_back }}</p>
+    <p class="{% if order.is_overdue %}alert-danger{% endif %}">{% trans 'Due back' %}: {{ order.due_back }}</p>
     <p>{% trans 'Sum' %}: {{ order.sum }} EUR</p>
 
 {% if order.order_lines %}

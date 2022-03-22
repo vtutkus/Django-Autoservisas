@@ -18,5 +18,32 @@
 </ul>
 {% endif %}
 </section>
+<section>
+{% if order.order_messages %}
+<h4 class="mt-4">Messages</h4>
+<ul class="list-group">
+    {% for message in order.order_messages.all %}
+        <li class="list-group-item">
+            <h6>{% if message.author.first_name %}{{ message.author.first_name }} {{ message.author.last_name }}{% else %}{{ message.author }}{% endif %} on {{message.created_at}} wrote:</h6>
+            {{message.message|safe}}
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="text-danger">{{ form.errors}}</div>
+{% if request.user.is_authenticated and request.user == order.car_instance.owner%}
+<div class="fieldWrapper">
+    <h5>{% trans 'Leave your message' %}</h5>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.order}}
+        {{form.author}}
+        {{form.message}}
+        <br>
+        <input type="submit" value="{% trans 'Submit' %}" class="btn btn-primary">
+    </form>
+</div>
+{% endif %}
+</section>
 
 {% endblock content %}

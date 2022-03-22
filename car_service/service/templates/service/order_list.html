@@ -20,12 +20,18 @@
     <ul class="list-group">
         {% for order in orders %}
             <li class="list-group-item {% if order.is_overdue %}list-group-item-danger{% endif %}">
-                <a href="{% url 'service:order-detail' order.id %}">{{ order.car_instance.registration }}, {{ order.created_at }}</a>
+                <img src="{% if order.car_instance.owner and order.car_instance.owner.profile.picture %}{{ order.car_instance.owner.profile.picture.url }}{% else %}{% static 'user_profile/img/default.png' %}{% endif %}" class="rounded mr-2" style="max-height: 70px">
+                <a href="{% url 'service:order-detail' order.id %}" style="height: 2rem">{{ order.car_instance }} | Due back: {{ order.due_back }}</a>
+                {% if order.car_instance.owner == request.user %}
+                <a href="{% url 'service:update-order' order.id %}" class="btn btn-info">{% trans 'Update' %}</a>
+                <a href="{% url 'service:delete-order' order.id %}" class="btn btn-danger">{% trans 'Delete' %}</a>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
     {% else %}
     <p>{% trans "there are no orders registered in this car service" %}</p>
     {% endif %}
+    <a href="{% url 'service:create-order'%}" class="btn btn-primary mt-2">{% trans 'Place order' %}</a>
 {% endblock content %}
 

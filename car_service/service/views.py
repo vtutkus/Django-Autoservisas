@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect, render, get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from .models import CarModel, CarInstance, Service, Order
+from .forms import OrderMessageForm, OrderForm
 
 
 # Create your views here.
@@ -73,10 +74,100 @@ class OrderListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-class OrderDetailView(generic.DetailView):
+class OrderDetailView(generic.DetailView, FormMixin):
     model = Order
     context_object_name = 'order'
     template_name = 'service/order_detail.html'
+    form_class = OrderMessageForm
+
+    def get_success_url(self):
+        return reverse_lazy('service:order-detail', kwargs={'pk': self.object.id})
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = OrderMessageForm(initial={
+            'order': self.object,
+            'author': self.request.user
+        })
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.order = self.object
+        form.instance.author = self.request.user
+        form.save()
+        return super(OrderDetailView, self).form_valid(form)
+
+
+class CreateOrderView(generic.CreateView, LoginRequiredMixin):
+    model = Order
+    # fields = ['car_instance', 'due_back', ]
+    success_url = reverse_lazy('service:orders')
+    template_name = 'service/order_form.html'
+    form_class = OrderForm
+
+    # def form_valid(self, form):
+    #     form.instance.current_reader = self.request.user
+    #     form.instance.status = 10
+        # return super().form_valid(form)
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial.update({
+            'due_back': date.today() + timedelta(days=7)
+        })
+        return initial
+    
+    def get_form_kwargs(self):
+        """ Passes the request object to the form class.
+         This is necessary to only display members that belong to a given user"""
+
+        kwargs = super(CreateOrderView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+
+
+class UpdateOrderView(generic.UpdateView, LoginRequiredMixin):
+    model = Order
+    # fields = ['car_instance', 'due_back', ]
+    success_url = reverse_lazy('service:orders')
+    template_name = 'service/order_form.html'
+    form_class = OrderForm
+    
+
+    # def get_form(self):
+    #     form = super().get_form()
+    #     print(form.fields['car_instance'].queryset)
+    #     return form
+
+    def get_form_kwargs(self):
+        """ Passes the request object to the form class.
+         This is necessary to only display members that belong to a given user"""
+
+        kwargs = super(UpdateOrderView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+
+    def test_func(self):
+        order = self.get_object()
+        return self.request.user == order.car_instance.owner
+
+
+class DeleteOrderView(generic.DeleteView, LoginRequiredMixin):
+    model = Order
+    success_url = reverse_lazy('service:orders')
+    template_name = 'service/order_delete.html'
+
+    def test_func(self):
+        order = self.get_object()
+        return self.request.user == order.car_instance.owner
 
 
 def search_cars(request):
@@ -84,6 +175,7 @@ def search_cars(request):
     search_results = CarInstance.objects.filter(
         Q(model__model__icontains=query) |
         Q(owner__first_name__icontains=query) |
+        Q(owner__last_name__icontains=query) |
         Q(registration__icontains=query) |
         Q(vin__icontains=query)
     )

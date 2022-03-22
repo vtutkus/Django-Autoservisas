@@ -66,7 +66,7 @@ class Order(models.Model):
         verbose_name=_("Car Instance"),
         related_name='orders',
     )
-    sum = models.DecimalField(_('Sum'), null=False,
+    sum = models.DecimalField(_('Sum'), null=True, blank=True, default=0,
                               max_digits=10, decimal_places=2)
     
     ORDER_STATUS = (
@@ -149,3 +149,27 @@ class OrderLine(models.Model):
         for line in self.order.order_lines.all():
             self.order.sum += line.total_price
         self.order.save()
+
+class OrderMessages(models.Model):
+    order = models.ForeignKey(
+        Order,
+        null=False,
+        on_delete=models.CASCADE,
+        verbose_name=_("Order"),
+        related_name='order_messages',
+    )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=False, 
+        on_delete=models.CASCADE)
+    message = HTMLField(_('Message'), max_length=1000, blank=True, default='')
+    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
+    
+    
+    class Meta:
+        verbose_name = _('Order Message')
+        verbose_name_plural = _('Order Messages')
+
+    def __str__(self) -> str:
+        return f'{self.order}, {self.author}: {self.message}'
+    

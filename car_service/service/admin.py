@@ -13,6 +13,7 @@ class OrderLineInline(admin.TabularInline):
     can_delete = True
     extra = 0
 
+
 class CarModelAdmin(admin.ModelAdmin):
     list_display = ('make', 'model')
     list_display_links = ('model',)
@@ -23,7 +24,7 @@ class CarModelAdmin(admin.ModelAdmin):
 class CarInstanceAdmin(admin.ModelAdmin):
     list_display = ('registration', 'model', 'owner', 'vin', 'picture')
     list_display_links = ('registration',)
-    list_filter = ('owner','model',)
+    list_filter = ('owner', 'model',)
     search_fields = ('registration', 'vin')
 
 
@@ -36,19 +37,20 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderLineInline, )
 
 
-
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('name', 'price',)
     list_display_links = ('name',)
     # list_filter = ('car_instance',)
     search_fields = ('name',)
 
+
 class OrderLineAdmin(admin.ModelAdmin):
     list_display = ('id', 'order', 'service', 'quantity', 'price')
     list_display_links = ('id',)
     list_filter = ('order', 'service',)
     search_fields = ('order', 'service',)
-    
+
+
 class OrderMessagesAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'order', 'author', 'message')
     list_display_links = ('created_at',)

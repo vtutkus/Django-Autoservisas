@@ -15,8 +15,6 @@ class OrderMessageForm(forms.ModelForm):
 
 class OrderForm(forms.ModelForm):
 
-    # car_instance = forms.ModelChoiceField(queryset=CarInstance.objects.filter(owner=self.user))
-
     class Meta:
         model = Order
         fields = ('car_instance', 'due_back')

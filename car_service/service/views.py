@@ -1,12 +1,10 @@
 from datetime import date, timedelta
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.core.paginator import Paginator
-from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.views import generic
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from .models import CarModel, CarInstance, Service, Order
 from .forms import OrderMessageForm, OrderForm
@@ -45,10 +43,6 @@ class CarInstanceListView(LoginRequiredMixin, generic.ListView):
         if not self.request.user.is_superuser and not self.request.user.is_staff:
             queryset = queryset.filter(owner=self.request.user)
         return queryset
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     return context
 
 
 class CarInstanceDetailView(generic.DetailView):
@@ -113,18 +107,13 @@ class CreateOrderView(generic.CreateView, LoginRequiredMixin):
     template_name = 'service/order_form.html'
     form_class = OrderForm
 
-    # def form_valid(self, form):
-    #     form.instance.current_reader = self.request.user
-    #     form.instance.status = 10
-        # return super().form_valid(form)
-
     def get_initial(self):
         initial = super().get_initial()
         initial.update({
             'due_back': date.today() + timedelta(days=7)
         })
         return initial
-    
+
     def get_form_kwargs(self):
         """ Passes the request object to the form class.
          This is necessary to only display members that belong to a given user"""
@@ -140,12 +129,6 @@ class UpdateOrderView(generic.UpdateView, LoginRequiredMixin):
     success_url = reverse_lazy('service:orders')
     template_name = 'service/order_form.html'
     form_class = OrderForm
-    
-
-    # def get_form(self):
-    #     form = super().get_form()
-    #     print(form.fields['car_instance'].queryset)
-    #     return form
 
     def get_form_kwargs(self):
         """ Passes the request object to the form class.
